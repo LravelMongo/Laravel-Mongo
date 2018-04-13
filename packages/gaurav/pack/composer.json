@@ -1,0 +1,10 @@
+{
+    "name": "gaurav/message",
+    "authors": [
+        {
+            "name": "gaurav",
+            "email": "gauravmrvh1@gmail.com"
+        }
+    ],
+    "require": {}
+}
