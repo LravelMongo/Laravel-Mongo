@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+
+// Route::get('test','TestingController@test');
+
+Route::post('test-laravel-medial-library','AvtarController@store');

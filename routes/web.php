@@ -11,6 +11,7 @@ dd($data);*/
 
 
 Route::get('/',function(){
+	// return sayHello(); // my custom function 
 	// return FB::getDomain();
 	return view('welcome');
 });
@@ -43,6 +44,16 @@ Route::get('/many-to-many-relationship', function () {
 	echo "<br> Role ";
 	print_r($Role->toArray());
     // return view('welcome');
+});
+
+
+Route::get('one-to-one',function(){
+	$User = App\Models\User::find(1)->phone;
+	$Phone = App\Models\Phone::find(1)->user;
+
+	echo "<pre>";
+	print_r($User->toArray());
+	print_r($Phone->toArray());
 });
 
 

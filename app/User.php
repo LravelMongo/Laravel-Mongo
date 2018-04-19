@@ -2,34 +2,31 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
+
+class User extends Model implements HasMediaConversions
 {
-    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+	use HasMediaTrait;
+	
+	public function roles(){
+		return $this->belongsToMany('App\Role')
+			->as('NewName')
+			->withPivot('id');
+	}
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+	public function registerMediaConversions(Media $media = null)
+	{
+	  	$this->addMediaConversion('thumb')
+			->width(368)
+			->height(232)
+			->sharpen(10);
+	}
 
-    public function roles(){
-        return $this->belongsToMany('App\Role')
-            ->as('NewName')
-            ->withPivot('id');
-    }
+	
 }
