@@ -37,8 +37,8 @@ Route::get('/many-to-many-relationship', function () {
 				   	return $this->belongsToMany('App\User');
 				   }
 	*/ 
-	$User = App\Role::find(2)->users;
-	$Role = App\User::find(1)->roles;
+	$User = App\Role::find(2)->users; // find user with role id 2
+	$Role = App\User::find(1)->roles; // find role of user id 1
 	echo "<pre> User ";
 	print_r($User->toArray());
 	echo "<br> Role ";
@@ -56,7 +56,9 @@ Route::get('one-to-one',function(){
 	print_r($Phone->toArray());
 });
 
-
+Route::get('Has-Many-Through',function(){
+	dd(App\HasManyThrough\Model\Countries::find(80)->posts->toArray());
+});
 
 Route::get('custom-package-creation',function(){
 	return Message::display();

@@ -15,7 +15,11 @@ class User extends Model implements HasMediaConversions
 	use HasMediaTrait;
 	
 	public function roles(){
-		return $this->belongsToMany('App\Role')
+		return $this->belongsToMany('App\Role','role_user') 
+			// first arg model name
+			// second arg would be relationship's joining table name like role_user 
+			// third arg would be current model foreign key user_id
+			// fourth arg would be parent table forign key role_id
 			->as('NewName')
 			->withPivot('id');
 	}
