@@ -12,6 +12,7 @@ use Spatie\MediaLibrary\Media;
 class User extends Model implements HasMediaConversions
 {
 
+	protected $table = 'users';
 	use HasMediaTrait;
 	
 	public function roles(){
