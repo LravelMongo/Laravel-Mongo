@@ -23,6 +23,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('test-laravel-medial-library','AvtarController@store');
 
-Route::get('users/{user}',function(App\User $user){
+Route::get('users/{user}',function(App\User $user){ 
+	// Route Model Binding (Implicit Binding)
+	// https://laravel.com/docs/5.6/routing#route-model-binding
 	dd($user->toArray());
 });
+
+
+// https://laravel.com/docs/5.6/requests#accessing-the-request
+
+Route::post('');

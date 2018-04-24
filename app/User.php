@@ -12,6 +12,10 @@ use Spatie\MediaLibrary\Media;
 class User extends Model implements HasMediaConversions
 {
 
+	protected $casts = [
+		'country_id' => 'string',
+	];
+
 	protected $table = 'users';
 	use HasMediaTrait;
 	
